@@ -1,0 +1,23 @@
+services:
+  holdings-ingester:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: holdings-ingester
+    environment:
+      - PORT=${PORT}
+      - CLICKHOUSE_HOST=${CLICKHOUSE_HOST}
+      - CLICKHOUSE_PORT=${CLICKHOUSE_PORT}
+      - CLICKHOUSE_USER=${CLICKHOUSE_USER}
+      - CLICKHOUSE_PASSWORD=${CLICKHOUSE_PASSWORD}
+      - CLICKHOUSE_DATABASE=${CLICKHOUSE_DATABASE}
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/.venv
+    depends_on:
+      clickhouse:
+        condition: service_healthy
+    ports:
+      - "${PORT}:${PORT}"
+    restart: unless-stopped
