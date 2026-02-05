@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SSMIF Holdings Upload</title>
+  </head>
+  <body>
+  <main class="card">
+    <h1>Upload Holdings</h1>
+
+    <label id="dropzone" class="dropzone">
+      <input id="file" type="file" accept=".csv,text/csv" />
+      <div class="dropzone-title">Drag and drop CSV here</div>
+      <div class="dropzone-subtitle">or click to choose file</div>
+    </label>
+
+    <button id="upload" disabled>Upload</button>
+  </main>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
